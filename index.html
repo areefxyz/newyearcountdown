@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+    <title>New Year Countdown</title>
+</head>
+<body>
+
+<video autoplay muted loop id="myVideo">
+  <source src="bg.mp4" type="video/mp4">
+  Your browser does not support HTML5 video.
+</video>
+<div class="content">
+<h1 id="byebye">Bye Bye 2024</h1>
+<p id="countdown"></p>
+</div>
+<script>
+    // Set the date for New Year
+    const newYearDate = new Date("January 1, 2025 00:00:00").getTime();
+
+    // Update the countdown every second
+    const countdown = setInterval(() => {
+        // Get the current date and time
+        const now = new Date().getTime();
+
+        // Calculate the remaining time in seconds
+        const secondsRemaining = Math.floor((newYearDate - now) / 1000);
+
+        // Display the remaining time in the "countdown" element
+        document.getElementById("countdown").innerText = secondsRemaining;
+
+        // Check if the countdown is over
+        if (secondsRemaining <= 0) {
+            clearInterval(countdown); // Stop the countdown when it reaches zero
+            document.getElementById("countdown").innerText = "Happy New Year!";
+			document.getElementById("byebye").innerText = "";
+			  
+        }
+    }, 1000); // Update every second
+</script>
+
+</body>
+</html>
